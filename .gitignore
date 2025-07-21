@@ -1,0 +1,14 @@
+/server/target/          # Compiled Java classes go here (auto-generated)
+/server/.env             # Secrets like DB passwords and JWT tokens go here
+*.class                  # Compiled Java files
+*.log                    # Log files generated during run
+*.iml                    # IntelliJ-specific project files
+
+# === React Frontend ===
+/client/node_modules/    # All installed npm packages (very large)
+/client/.env             # React API URLs and frontend secrets
+
+# === Editor & System Files ===
+.idea/                   # IntelliJ project config
+.vscode/                 # VS Code workspace settings
+.DS_Store                # macOS system file (safe to ignore everywhere)
