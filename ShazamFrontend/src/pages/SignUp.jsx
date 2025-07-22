@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 
-const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = '${import.meta.env.VITE_BACKEND_URL}/api';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -87,7 +87,7 @@ const SignUp = () => {
   };
 
   const handleOAuthLogin = (provider) => {
-    window.location.href = `http://localhost:8080/oauth2/authorize/${provider}`;
+    window.location.href = `${import.meta.env.VITE_BACKEND_URL}/oauth2/authorize/${provider}`;
   };
 
   return (

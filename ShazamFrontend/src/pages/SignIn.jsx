@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-hot-toast';
 
-const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = '${import.meta.env.VITE_BACKEND_URL}/api';
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const SignIn = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8080/api/auth/signin', {
+      const response = await fetch('${import.meta.env.VITE_BACKEND_URL}/api/auth/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ const SignIn = () => {
   };
 
   const handleOAuthLogin = (provider) => {
-    window.location.href = `http://localhost:8080/oauth2/authorize/${provider}`;
+    window.location.href = `${import.meta.env.VITE_BACKEND_URL}/oauth2/authorize/${provider}`;
   };
 
   return (

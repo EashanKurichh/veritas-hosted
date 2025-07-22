@@ -109,12 +109,12 @@ const ConcertCard = ({ concert, onDelete, onEdit, onCopyUrl }) => (
           <div className="flex items-center gap-2">
             <input
               type="text"
-              value={`http://localhost:5173${concert.ticketLink}`}
+              value={`${import.meta.env.VITE_FRONTEND_URL}${concert.ticketLink}`}
               readOnly
               className="flex-1 bg-zinc-900 text-white px-2 py-1 rounded border border-zinc-700 text-xs"
             />
             <button
-              onClick={() => onCopyUrl(`http://localhost:5173${concert.ticketLink}`)}
+              onClick={() => onCopyUrl(`${import.meta.env.VITE_FRONTEND_URL}${concert.ticketLink}`)}
               className="px-2 py-1 bg-zinc-800 hover:bg-zinc-700 text-white rounded text-xs font-medium transition-colors"
             >
               <i className="ri-file-copy-line"></i>

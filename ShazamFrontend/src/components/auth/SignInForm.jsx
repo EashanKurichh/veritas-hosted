@@ -20,7 +20,7 @@ const SignInForm = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:8080/api/auth/signin', formData);
+      const response = await axios.post('${import.meta.env.VITE_BACKEND_URL}/api/auth/signin', formData);
       // Handle successful signin
       console.log('Signin successful:', response.data);
       // You can add navigation or success message here
@@ -32,7 +32,7 @@ const SignInForm = () => {
   };
 
   const handleOAuthLogin = (provider) => {
-    window.location.href = `http://localhost:8080/oauth2/authorize/${provider}`;
+    window.location.href = `${import.meta.env.VITE_BACKEND_URL}/oauth2/authorize/${provider}`;
   };
 
   return (

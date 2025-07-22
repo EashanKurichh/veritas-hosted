@@ -49,7 +49,7 @@ const Charts = () => {
       try {
         setLoading(true);
         setError(null);
-        const response = await axios.get(`http://localhost:8080/api/charts/${activeTab}`);
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/charts/${activeTab}`);
         
         // Debug log to see the response structure
         console.log('API Response:', response.data);

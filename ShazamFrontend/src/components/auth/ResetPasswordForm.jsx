@@ -29,7 +29,7 @@ const ResetPasswordForm = () => {
 
     setLoading(true);
     try {
-      await axios.post('http://localhost:8080/api/auth/reset-password', {
+      await axios.post('${import.meta.env.VITE_BACKEND_URL}/api/auth/reset-password', {
         token,
         password: formData.password
       });

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 
-const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = '${import.meta.env.VITE_BACKEND_URL}/api';
 
 const ChangePassword = () => {
   const [error, setError] = useState('');

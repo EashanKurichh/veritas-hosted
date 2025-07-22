@@ -16,7 +16,7 @@ const ForgotPasswordForm = () => {
     setSuccess(false);
 
     try {
-      await axios.post('http://localhost:8080/api/auth/forgot-password', { email });
+      await axios.post('${import.meta.env.VITE_BACKEND_URL}/api/auth/forgot-password', { email });
       setSuccess(true);
     } catch (err) {
       setError(err.response?.data?.message || 'An error occurred. Please try again.');

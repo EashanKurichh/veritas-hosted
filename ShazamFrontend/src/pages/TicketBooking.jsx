@@ -58,7 +58,7 @@ const TicketBooking = () => {
         }
 
         // Fetch ticket data
-        const ticketResponse = await fetch(`http://localhost:8080/api/tickets/${uuid}`, {
+        const ticketResponse = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/tickets/${uuid}`, {
           headers
         });
         if (!ticketResponse.ok) throw new Error('Failed to fetch ticket data');
@@ -72,7 +72,7 @@ const TicketBooking = () => {
         setTicketData(ticketData);
 
         // Fetch concert data using concertId from ticket data
-        const concertResponse = await fetch(`http://localhost:8080/api/concerts/${ticketData.concertId}`, {
+        const concertResponse = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/concerts/${ticketData.concertId}`, {
           headers
         });
         

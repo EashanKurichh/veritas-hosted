@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
-const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = '${import.meta.env.VITE_BACKEND_URL}/api';
 
 const SignUpForm = () => {
   const navigate = useNavigate();
@@ -84,7 +84,7 @@ const SignUpForm = () => {
   };
 
   const handleOAuthLogin = (provider) => {
-    window.location.href = `http://localhost:8080/oauth2/authorize/${provider}`;
+    window.location.href = `${import.meta.env.VITE_BACKEND_URL}/oauth2/authorize/${provider}`;
   };
 
   return (

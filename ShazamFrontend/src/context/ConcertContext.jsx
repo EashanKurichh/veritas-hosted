@@ -74,7 +74,7 @@ export const ConcertProvider = ({ children }) => {
       const headers = getAuthHeaders();
       console.log('Request headers:', headers);
 
-      const response = await fetch('http://localhost:8080/api/concerts', {
+      const response = await fetch('${import.meta.env.VITE_BACKEND_URL}/api/concerts', {
         headers,
         credentials: 'include'
       });
@@ -130,7 +130,7 @@ export const ConcertProvider = ({ children }) => {
 
       console.log('Creating ticket with data:', JSON.stringify(ticketRequest, null, 2));
 
-      const response = await fetch('http://localhost:8080/api/tickets', {
+      const response = await fetch('${import.meta.env.VITE_BACKEND_URL}/api/tickets', {
         method: 'POST',
         headers: {
           ...getAuthHeaders(),
@@ -200,7 +200,7 @@ export const ConcertProvider = ({ children }) => {
       console.log('Creating concert with data:', JSON.stringify(newConcert, null, 2));
 
       // Create concert in backend
-      const concertResponse = await fetch('http://localhost:8080/api/concerts', {
+      const concertResponse = await fetch('${import.meta.env.VITE_BACKEND_URL}/api/concerts', {
         method: 'POST',
         headers: getAuthHeaders(),
         credentials: 'include',
@@ -225,7 +225,7 @@ export const ConcertProvider = ({ children }) => {
           createdConcert.ticketLink = bookingUrl;
 
           // Update the concert in the backend with the new ticket link
-          const updateResponse = await fetch(`http://localhost:8080/api/concerts/${createdConcert.id}`, {
+          const updateResponse = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/concerts/${createdConcert.id}`, {
             method: 'PUT',
             headers: getAuthHeaders(),
             credentials: 'include',
@@ -238,7 +238,7 @@ export const ConcertProvider = ({ children }) => {
         } catch (error) {
           console.error('Error creating ticket page:', error);
           // For BOOKABLE concerts, if ticket creation fails, delete the concert
-          await fetch(`http://localhost:8080/api/concerts/${createdConcert.id}`, {
+          await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/concerts/${createdConcert.id}`, {
             method: 'DELETE',
             headers: getAuthHeaders(),
             credentials: 'include'
@@ -252,7 +252,7 @@ export const ConcertProvider = ({ children }) => {
           const bookingUrl = ticketResponse.bookingUrl || `/book-ticket/${slug}`;
           createdConcert.ticketLink = bookingUrl;
 
-          await fetch(`http://localhost:8080/api/concerts/${createdConcert.id}`, {
+          await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/concerts/${createdConcert.id}`, {
             method: 'PUT',
             headers: getAuthHeaders(),
             credentials: 'include',
@@ -304,7 +304,7 @@ export const ConcertProvider = ({ children }) => {
       };
 
       // Update concert in backend
-      const response = await fetch(`http://localhost:8080/api/concerts/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/concerts/${id}`, {
         method: 'PUT',
         headers: getAuthHeaders(),
         credentials: 'include',
@@ -329,7 +329,7 @@ export const ConcertProvider = ({ children }) => {
           updatedConcert.ticketLink = bookingUrl;
 
           // Update the concert again with the new ticket link
-          const updateResponse = await fetch(`http://localhost:8080/api/concerts/${id}`, {
+          const updateResponse = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/concerts/${id}`, {
             method: 'PUT',
             headers: getAuthHeaders(),
             credentials: 'include',
@@ -350,7 +350,7 @@ export const ConcertProvider = ({ children }) => {
           const bookingUrl = ticketResponse.bookingUrl || `/book-ticket/${slug}`;
           updatedConcert.ticketLink = bookingUrl;
 
-          await fetch(`http://localhost:8080/api/concerts/${id}`, {
+          await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/concerts/${id}`, {
             method: 'PUT',
             headers: getAuthHeaders(),
             credentials: 'include',
@@ -379,7 +379,7 @@ export const ConcertProvider = ({ children }) => {
 
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:8080/api/concerts/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/concerts/${id}`, {
         method: 'DELETE',
         headers: getAuthHeaders(),
         credentials: 'include'
@@ -416,7 +416,7 @@ export const ConcertProvider = ({ children }) => {
     if (!isAuthenticated || !token) throw new Error('Authentication required');
 
     try {
-      const response = await fetch(`http://localhost:8080/api/tickets/concert/${concertId}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/tickets/concert/${concertId}`, {
         headers: {
           ...getAuthHeaders(),
           'X-Timezone-Offset': '-330' // IST is UTC+5:30, so offset is -330 minutes

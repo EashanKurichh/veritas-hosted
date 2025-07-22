@@ -18,7 +18,7 @@ const TicketVerification = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        'http://localhost:8080/api/admin/verify-ticket',
+        '${import.meta.env.VITE_BACKEND_URL}/api/admin/verify-ticket',
         { ticketCode },
         {
           headers: {
@@ -41,7 +41,7 @@ const TicketVerification = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        'http://localhost:8080/api/admin/mark-ticket-used',
+        '${import.meta.env.VITE_BACKEND_URL}/api/admin/mark-ticket-used',
         { ticketCode },
         {
           headers: {
