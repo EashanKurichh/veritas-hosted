@@ -1,0 +1,1 @@
+ALTER TABLE ticket_assignment MODIFY COLUMN order_id VARCHAR(255) NOT NULL; 
