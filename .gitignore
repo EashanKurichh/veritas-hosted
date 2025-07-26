@@ -12,3 +12,4 @@
 .idea/                   # IntelliJ project config
 .vscode/                 # VS Code workspace settings
 .DS_Store                # macOS system file (safe to ignore everywhere)
+.env
