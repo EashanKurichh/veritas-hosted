@@ -1,4 +1,4 @@
-# Use an official OpenJDK 21 JDK image for the build stage
+# Use openjdk:21-jdk-slim as the base image for building
 FROM openjdk:21-jdk-slim AS build
 
 # Set the working directory inside the container
@@ -18,9 +18,9 @@ RUN chmod +x mvnw
 # Build the Spring Boot application (skip tests for faster build)
 RUN ./mvnw clean install -DskipTests
 
-# Use a smaller, runtime-focused OpenJDK 21 JRE image for the final application
-# Using 'bullseye' variant for better compatibility and explicit selection
-FROM openjdk:21-jre-slim-bullseye
+# Use openjdk:21-jdk-slim for the final runtime image as well,
+# since jre-slim variants are not consistently available for Java 21.
+FROM openjdk:21-jdk-slim
 
 # Set the working directory
 WORKDIR /app
