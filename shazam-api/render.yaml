@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: veritas-vi
+    env: java
+    buildCommand: ./mvnw clean install -DskipTests
+    startCommand: java -jar target/*.jar
+    javaVersion: 21
