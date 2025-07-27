@@ -1,4 +1,4 @@
-# Use an official OpenJDK 21 runtime as the base image for building
+# Use an official OpenJDK 21 JDK image for the build stage
 FROM openjdk:21-jdk-slim AS build
 
 # Set the working directory inside the container
@@ -12,14 +12,15 @@ COPY pom.xml .
 # Copy the source code
 COPY src src
 
-# Make mvnw executable (important for Linux environments inside Docker)
+# Make mvnw executable
 RUN chmod +x mvnw
 
 # Build the Spring Boot application (skip tests for faster build)
 RUN ./mvnw clean install -DskipTests
 
-# Use a smaller, runtime-focused OpenJDK 21 base image for the final application
-FROM openjdk:21-jre-slim
+# Use a smaller, runtime-focused OpenJDK 21 JRE image for the final application
+# Using 'bullseye' variant for better compatibility and explicit selection
+FROM openjdk:21-jre-slim-bullseye
 
 # Set the working directory
 WORKDIR /app
