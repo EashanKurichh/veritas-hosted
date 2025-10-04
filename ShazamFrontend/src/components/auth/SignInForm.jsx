@@ -17,10 +17,11 @@ const SignInForm = () => {
   };
 
   const handleSubmit = async (e) => {
+    console.log("Env check:", import.meta.env.VITE_BACKEND_URL);
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post('${import.meta.env.VITE_BACKEND_URL}/api/auth/signin', formData);
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/signin`, formData);
       // Handle successful signin
       console.log('Signin successful:', response.data);
       // You can add navigation or success message here
