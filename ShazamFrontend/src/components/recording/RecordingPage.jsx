@@ -229,7 +229,7 @@ const RecordingPage = () => {
       formData.append('file', wavBlob, 'recording.wav');
 
       console.log('Sending audio file:', wavBlob);
-      const response = await axios.post('${import.meta.env.VITE_BACKEND_URL}/match', formData, {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/match`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

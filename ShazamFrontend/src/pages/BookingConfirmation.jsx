@@ -8,7 +8,7 @@ import QRCode from 'qrcode';
 
 // Create axios instance with default config
 const api = axios.create({
-  baseURL: '${import.meta.env.VITE_BACKEND_URL}',
+  baseURL: `${import.meta.env.VITE_BACKEND_URL}`,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json'

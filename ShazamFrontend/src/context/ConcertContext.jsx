@@ -74,7 +74,7 @@ export const ConcertProvider = ({ children }) => {
       const headers = getAuthHeaders();
       console.log('Request headers:', headers);
 
-      const response = await fetch('${import.meta.env.VITE_BACKEND_URL}/api/concerts', {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/concerts`, {
         headers,
         credentials: 'include'
       });
@@ -130,7 +130,7 @@ export const ConcertProvider = ({ children }) => {
 
       console.log('Creating ticket with data:', JSON.stringify(ticketRequest, null, 2));
 
-      const response = await fetch('${import.meta.env.VITE_BACKEND_URL}/api/tickets', {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/tickets`, {
         method: 'POST',
         headers: {
           ...getAuthHeaders(),
@@ -200,7 +200,7 @@ export const ConcertProvider = ({ children }) => {
       console.log('Creating concert with data:', JSON.stringify(newConcert, null, 2));
 
       // Create concert in backend
-      const concertResponse = await fetch('${import.meta.env.VITE_BACKEND_URL}/api/concerts', {
+      const concertResponse = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/concerts`, {
         method: 'POST',
         headers: getAuthHeaders(),
         credentials: 'include',

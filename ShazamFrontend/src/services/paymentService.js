@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
-const SERVER_URL = '${import.meta.env.VITE_BACKEND_URL}';
+const SERVER_URL = `${import.meta.env.VITE_BACKEND_URL}`;
 
 // Create axios instance with default config
 const api = axios.create({

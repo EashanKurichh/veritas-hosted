@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 
-const API_BASE_URL = '${import.meta.env.VITE_BACKEND_URL}/api';
+const API_BASE_URL = `${import.meta.env.VITE_BACKEND_URL}/api`;
 
 const ResetPassword = () => {
   const navigate = useNavigate();
